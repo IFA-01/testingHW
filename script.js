@@ -25,7 +25,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
         input.value = '';
         manageParagraphs();
+        updateButtonVisibility();
     }
+
 
     function manageParagraphs(){
         const allParagraphs = document.querySelectorAll('p')
@@ -38,6 +40,12 @@ document.addEventListener('DOMContentLoaded', function(){
         updateButtonVisibility();
         manageParagraphs();
 
+
         input.addEventListener('input', updateButtonVisibility);
         button.addEventListener('click', addTextBlock);
+        input.addEventListener('keydown', function(event) {
+          if (event.key === 'Enter'){
+            button.click();
+          }
+        })
 });
